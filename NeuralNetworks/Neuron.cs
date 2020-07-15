@@ -29,7 +29,15 @@ namespace NeuralNetworks
                 sum += inputs[i] * Weights[i];
             }
 
-            Output = Sigmoid(sum);
+            if (NeuronType != NeuronType.Input)
+            {
+                Output = Sigmoid(sum);
+            }
+            else
+            {
+                Output = sum;
+            }
+
             return Output;
         }
 
@@ -39,7 +47,7 @@ namespace NeuralNetworks
             return result;
         }
 
-        private void SetWeights(params double[] weights)
+        public void SetWeights(params double[] weights)
         {
             // ToDo: удалить после добавления возможности обучения сети.
 
