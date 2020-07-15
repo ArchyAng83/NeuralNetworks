@@ -26,7 +26,7 @@ namespace NeuralNetworks
 
             for (int i = 0; i < inputs.Count; i++)
             {
-                sum += inputs[i] + Weights[i];
+                sum += inputs[i] * Weights[i];
             }
 
             Output = Sigmoid(sum);
@@ -37,6 +37,16 @@ namespace NeuralNetworks
         {
             var result = 1.0 / (1.0 + Math.Exp(-x));
             return result;
+        }
+
+        private void SetWeights(params double[] weights)
+        {
+            // ToDo: удалить после добавления возможности обучения сети.
+
+            for (int i = 0; i < weights.Length; i++)
+            {
+                Weights[i] = weights[i];
+            }
         }
 
         public override string ToString()
